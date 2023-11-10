@@ -6,9 +6,7 @@ import { Modal } from "./Modal";
 import { PostsShow } from "./PostsShow";
 
 export function Content() {
-  // let posts = []; -> Old way
   const [posts, setPosts] = useState([]); // React way
-
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
 
   const handleShowPost = (post) => {
@@ -31,31 +29,23 @@ export function Content() {
   };
 
   useEffect(handleIndexPosts,[]);
-  // let posts = [
 
-  //   {
-  //     id: 1,
-  //     title: "Otis",
-  //     body: "Otis is the cutest!",
-  //     image_url: "https://images.theconversation.com/files/471392/original/file-20220628-11-d6mcuz.jpg?ixlib=rb-1.1.0&rect=0%2C241%2C6709%2C3349&q=45&auto=format&w=1356&h=668&fit=crop",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Tiger",
-  //     body: "Tiger is cute!",
-  //     image_url: "https://westparkanimalhospital.com/wp-content/uploads/2019/05/WestPark_iStock-600994082-1024x706-1.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Lady",
-  //     body: "Lady is cute!",
-  //     image_url: "https://ae01.alicdn.com/kf/S593ad81d0c2c49ebaead767d8ba22e0bb/Sphynx-Hairless-Cat-Clothes-Sphinx-Devon-Cute-Pink-Rabbit-For-Extra-Winter-Warmth-Free-Shipping.png",
-  //   },
-  // ];
+  const handleCreatePost = (params) => {
+    axios
+
+    .post("http://localhost:3000/posts.json", params)
+    .then((response) => {
+      console.log(response.data);
+      setPosts([...posts, response.dat]);
+    })
+    .catch((error) => {
+      console.log(error.response.data.error);
+    });
+  }
 
   return (
     <div className= "container">
-      <PostsNew />
+      <PostsNew onCreatePost={handleCreatePost}/>
       {/* <button onClick={handleIndexPosts}>Load Posts</button> */}
       <PostsIndex myPosts={posts} onShowPost={handleShowPost} /> 
       <Modal show={isPostsShowVisible} onClose={handleClose}> 

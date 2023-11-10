@@ -5,13 +5,13 @@
     left: 0;
     width:100%;
     height: 100%;
-    background: #191515b3;
+    background: #242222b3;
     z-index: 1000;
   }
   
   .modal-main {
     position:fixed;
-    background: rgba(22, 21, 21, 0.926);
+    background: rgba(217, 209, 209, 0.926);
     width: 80%;
     height: auto;
     top:50%;
@@ -30,4 +30,5 @@
     top: 0em; 
     right: 0.2em;
     color: white;
+    text-decoration-color: beige;
   }
