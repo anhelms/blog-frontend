@@ -54,7 +54,7 @@ export function Content() {
   // ];
 
   return (
-    <div className= "main">
+    <div className= "container">
       <PostsNew />
       {/* <button onClick={handleIndexPosts}>Load Posts</button> */}
       <PostsIndex myPosts={posts} onShowPost={handleShowPost} /> 
