@@ -6,6 +6,10 @@ export function PostsShow(props) {
         event.target.reset();
     };
 
+    const handleClick = () => {
+        props.onDestroyPost(props.post);
+    };
+
     return(
     <div>
         <h2>Blog Post</h2>
@@ -22,8 +26,9 @@ export function PostsShow(props) {
             <div className="form-group">
                 Image: <input defaultValue={props.post.image} className="form-control" type="text" name="image" />
             </div> 
-            <button type="submit">Update post</button>
+            <button type="submit" className="btn btn-success">Update post</button>
         </form>
+        <button onClick={handleClick} className="btn btn-danger">Destroy Post</button>
     </div>
     );
 }
